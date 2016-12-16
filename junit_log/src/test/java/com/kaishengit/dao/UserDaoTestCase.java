@@ -31,7 +31,7 @@ public class UserDaoTestCase {
 
     @Test
     public void testFindById() {
-        User user = userDao.findById(1);
+        User user = userDao.findById(2);
 
         assertNotNull(user);
     }
@@ -39,7 +39,7 @@ public class UserDaoTestCase {
     @Test
     public void testFindAll() {
         List<User> userList = userDao.findAll();
-        assertEquals(1,userList.size());
+        assertEquals(3,userList.size());
     }
 
     @Test

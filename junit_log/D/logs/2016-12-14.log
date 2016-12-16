@@ -1,0 +1,14 @@
+12-14 09:04:39 [main] INFO  com.kaishengit.dao.Log4jTestCase - info message
+12-14 09:04:39 [main] WARN  com.kaishengit.dao.Log4jTestCase - warn message
+12-14 09:04:39 [main] ERROR com.kaishengit.dao.Log4jTestCase - error message
+12-14 09:09:51 [main] INFO  com.kaishengit.dao.Log4jTestCase - info message
+12-14 09:09:51 [main] WARN  com.kaishengit.dao.Log4jTestCase - warn message
+12-14 09:09:51 [main] ERROR com.kaishengit.dao.Log4jTestCase - error message
+12-14 09:45:01 [main] INFO  com.kaishengit.dao.Log4jTestCase - info message
+12-14 09:45:01 [main] WARN  com.kaishengit.dao.Log4jTestCase - warn message
+12-14 09:45:01 [main] ERROR com.kaishengit.dao.Log4jTestCase - error message
+12-14 09:46:01 [main] TRACE com.kaishengit.dao.Log4jTestCase - trace message
+12-14 09:46:01 [main] DEBUG com.kaishengit.dao.Log4jTestCase - debug message
+12-14 09:46:01 [main] INFO  com.kaishengit.dao.Log4jTestCase - info message
+12-14 09:46:01 [main] WARN  com.kaishengit.dao.Log4jTestCase - warn message
+12-14 09:46:01 [main] ERROR com.kaishengit.dao.Log4jTestCase - error message
