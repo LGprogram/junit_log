@@ -9,6 +9,15 @@ public class Login_Log {
     private Integer id;
     private Timestamp logintime;
     private String ip;
+    private Integer t_user_id;
+
+    public Integer getT_user_id() {
+        return t_user_id;
+    }
+
+    public void setT_user_id(Integer t_user_id) {
+        this.t_user_id = t_user_id;
+    }
 
     public Integer getId() {
         return id;

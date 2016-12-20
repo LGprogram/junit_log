@@ -22,4 +22,14 @@ public class UserDao {
         String sql = "insert into t_user(username, password, email, phone, state, avatar) VALUES (?,?,?,?,?,?)";
         DbHelp.update(sql,user.getUsername(),user.getPassword(),user.getEmail(),user.getPhone(),user.getState(),user.getAvatar());
     }
+
+    public void update(User user) {
+        String sql = "update t_user set username=?,password=?,email=?,phone=?,state=?,avatar=? where id=?";
+        DbHelp.update(sql,user.getUsername(),user.getPassword(),user.getEmail(),user.getPhone(),user.getState(),user.getAvatar(),user.getId());
+    }
+
+    public User findById(Integer id) {
+        String sql = "select*from t_user Where id = ? ";
+        return DbHelp.query(sql,new BeanHandler<>(User.class),id);
+    }
 }

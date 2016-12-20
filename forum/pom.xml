@@ -27,6 +27,7 @@
         <commons-codec-version>1.10</commons-codec-version>
         <gson-version>2.7</gson-version>
         <commons-email-version>1.4</commons-email-version>
+        <qiniu-version>7.2.0</qiniu-version>
     </properties>
     <dependencies>
         <dependency>
@@ -112,6 +113,18 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-email</artifactId>
             <version>${commons-email-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.qiniu</groupId>
+            <artifactId>qiniu-java-sdk</artifactId>
+            <version>${qiniu-version}</version>
+            <!--排除Maven的依赖-->
+            <exclusions>
+                <exclusion>
+                    <artifactId>com.google.code.gson</artifactId>
+                    <groupId>gson</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
 

@@ -2,18 +2,18 @@ package com.kaishengit.service;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import com.google.common.cache.LoadingCache;
+import com.kaishengit.dao.Login_LogDao;
 import com.kaishengit.dao.UserDao;
 import com.kaishengit.entity.User;
+import com.kaishengit.exception.ServiceException;
 import com.kaishengit.util.Config;
 import com.kaishengit.util.EmailUtil;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang3.ArrayUtils;
-
-import java.io.IOException;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Properties;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
@@ -22,8 +22,17 @@ import java.util.concurrent.TimeUnit;
  */
 public class UserService {
     private UserDao userDao = new UserDao();
+    private Login_LogDao login_logDao = new Login_LogDao();
+
+    private Logger logger = LoggerFactory.getLogger(UserService.class);
     //发送激活邮件的TOKEN缓存
-    private Cache<String,String> cache = CacheBuilder.newBuilder().expireAfterWrite(6, TimeUnit.HOURS).build();
+    private static Cache<String,String> cache = CacheBuilder.newBuilder().expireAfterWrite(6, TimeUnit.HOURS).build();
+
+    //找回密码提交频率缓存
+    private static Cache<String,String> submitCache =CacheBuilder.newBuilder().expireAfterWrite(60,TimeUnit.SECONDS).build();
+     //发送邮件找回密码的token缓存
+    private static Cache<String,String> foundPwdCache =CacheBuilder.newBuilder().expireAfterWrite(10,TimeUnit.MINUTES).build();
+
     public boolean validateUsername(String username) {
         String name = Config.get("no.signup.usernames");
         List<String> nameList = Arrays.asList(name.split(","));
@@ -50,16 +59,144 @@ public class UserService {
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
+                String subject = "注册验证";
                 String uuid= UUID.randomUUID().toString();
                 String url ="http://localhost/user/active?_="+uuid;
                 String html ="<h3>Dear "+username+":</h3>请点击<a href='"+url+"'>该链接</a>去激活你的账号. <br> 凯盛软件";
                 //放入缓存等待6个小时
                 cache.put(uuid,username);
 
-                EmailUtil.sendHttpemail(html,email);
+                EmailUtil.sendHttpemail(html,subject,email);
             }
         });
         thread.start();
 
+    }
+
+    public void findUserByToken(String token) {
+        String username = cache.getIfPresent(token);
+        if(StringUtils.isNotEmpty(username)){
+            User user = userDao.findByUsername(username);
+            if(user!=null){
+                user.setState(user.USERSTATE_ACTIVE);
+                userDao.update(user);
+                logger.info("用户{}激活了账号",user.getUsername());
+                cache.invalidate(token);
+            }else{
+                throw new ServiceException("无法找到对应的账号");
+            }
+        }else{
+            throw new ServiceException("token超时或错误");
+        }
+
+    }
+
+    public User login(String username, String password, String ip) {
+        User user = userDao.findByUsername(username);
+        if(user!=null&&user.getPassword().equals(DigestUtils.md5Hex(Config.get("password.salt")+password))){
+            if(user.getState().equals(user.USERSTATE_ACTIVE)){
+                login_logDao.save(ip,user.getId());
+                logger.info("用户{}登录",user.getUsername());
+                return user;
+            }else if(user.getState().equals(user.USERSTATE_UNACTIVE)){
+                throw new ServiceException("账号未激活");
+            }else{
+                throw new ServiceException("账号已被禁用");
+            }
+        }else{
+            throw new ServiceException("账号或密码错误");
+        }
+    }
+
+    public void foundPassword(String type, String value, String sessionId) {
+
+        if(type.equals("email")){
+            User user = userDao.findByEmail(value);
+            if(user!=null){
+                if(submitCache.getIfPresent(sessionId)==null){
+                    Thread thread = new Thread(new Runnable() {
+                        @Override
+                        public void run() {
+                            String subject = "找回密码";
+                            String uuid= UUID.randomUUID().toString();
+                            String url ="http://localhost/user/foundPwd?token="+uuid;
+                            String html ="<h3>Dear "+user.getUsername()+":</h3>请点击<a href='"+url+"'>该链接</a>重置密码。<br><p style='font-size:10px'>若非本人操作，请忽略</p><br> 凯盛软件";
+                            //放入缓存等待6个小时
+                            foundPwdCache.put(uuid,user.getUsername());
+
+
+                            EmailUtil.sendHttpemail(html,subject,value);
+                        }
+                    });
+                    thread.start();
+                    //既能证明是同一个客户端的操作，又能用来防止重复提交过快
+                    submitCache.put(sessionId,"xxx");
+                }else{
+                    throw new ServiceException("操作频率过快");
+                }
+            }else{
+                throw new ServiceException("请输入正确的邮箱");
+            }
+        }else{
+            //TODO 手机验证
+        }
+    }
+
+    /**
+     * token->username->user
+     *
+     * @param token
+     * @return
+     */
+    public User validateToken(String token) {
+        String username = foundPwdCache.getIfPresent(token);
+        if(StringUtils.isNotEmpty(username)){
+            User user = userDao.findByUsername(username);
+            return user;
+        }else{
+            throw new ServiceException("token超时");
+        }
+
+
+    }
+
+    /**
+     * 重置用户的密码
+     * @param id 用户ID
+     * @param token 找回密码的TOken
+     * @param password 新密码
+     */
+    public void resetPassword(String id, String token, String password) {
+        if(foundPwdCache.getIfPresent(token) == null) {
+            throw new ServiceException("token过期或错误");
+        } else {
+            User user = userDao.findById(Integer.valueOf(id));
+
+           user.setPassword(DigestUtils.md5Hex(Config.get("password.salt")+password));
+            userDao.update(user);
+            logger.info("{} 重置了密码",user.getUsername());
+        }
+        //修改完密码后将强制缓存失效
+        foundPwdCache.invalidate(token);
+
+    }
+
+    public void update(User user,String email) {
+        user.setEmail(email);
+        userDao.update(user);
+    }
+
+    public void updatePassword(User user, String oldpassword, String newpassword) {
+        if(user.getPassword().equals(DigestUtils.md5Hex(Config.get("password.salt")+oldpassword))){
+            user.setPassword(DigestUtils.md5Hex(Config.get("password.salt")+newpassword));
+            userDao.update(user);
+        }else{
+            throw new ServiceException("原始密码错误");
+        }
+    }
+
+    public void updateUserAvatar(User user, String filekey) {
+        user.setAvatar(filekey);
+        userDao.update(user);
     }
 }

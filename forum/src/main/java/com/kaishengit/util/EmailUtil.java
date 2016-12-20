@@ -8,7 +8,7 @@ import org.apache.commons.mail.*;
 public class EmailUtil {
 
     private static HtmlEmail email = new HtmlEmail();
-    public static void sendHttpemail(String html,String userEmail){
+    public static void sendHttpemail(String html,String subject ,String userEmail){
         email.setHostName(Config.get("email.smpt"));
         email.setAuthentication(Config.get("email.username"),Config.get("email.password"));
         email.setCharset("UTF-8");
@@ -16,7 +16,7 @@ public class EmailUtil {
 
         try {
             email.setFrom(Config.get("email.frommail"));
-            email.setSubject("注册验证");
+            email.setSubject(subject);
             email.setHtmlMsg(html);
             email.addTo(userEmail);
             email.send();
