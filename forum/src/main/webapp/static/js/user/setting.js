@@ -25,7 +25,7 @@ $(function () {
                 },
                 success:function (data) {
                     if(data.state=="success"){
-                        alert("修改成功");
+                        alert("修改成功,请去你修改的邮箱激活");
                     }else{
                         alert(data.message);
                     }

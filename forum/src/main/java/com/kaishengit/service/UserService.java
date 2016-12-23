@@ -25,7 +25,7 @@ public class UserService {
     private Login_LogDao login_logDao = new Login_LogDao();
 
     private Logger logger = LoggerFactory.getLogger(UserService.class);
-    //发送激活邮件的TOKEN缓存
+    //发送激活账号的TOKEN缓存：注册或者修改邮箱时诱发
     private static Cache<String,String> cache = CacheBuilder.newBuilder().expireAfterWrite(6, TimeUnit.HOURS).build();
 
     //找回密码提交频率缓存
@@ -93,6 +93,10 @@ public class UserService {
 
     public User login(String username, String password, String ip) {
         User user = userDao.findByUsername(username);
+        /*Integer loginLimitTimes = 3;
+        if(loginLimitTimes > 0){}else{}*/
+        //TODO 密码输错3次弹出验证码
+
         if(user!=null&&user.getPassword().equals(DigestUtils.md5Hex(Config.get("password.salt")+password))){
             if(user.getState().equals(user.USERSTATE_ACTIVE)){
                 login_logDao.save(ip,user.getId());
@@ -183,7 +187,22 @@ public class UserService {
 
     public void update(User user,String email) {
         user.setEmail(email);
+        user.setState(User.USERSTATE_UNACTIVE);
         userDao.update(user);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String subject = "修改邮箱验证";
+                String uuid= UUID.randomUUID().toString();
+                String url ="http://localhost/user/active?_="+uuid;
+                String html ="<h3>Dear "+user.getUsername()+":</h3>请点击<a href='"+url+"'>该链接</a>去激活你的账号. <br> 凯盛软件";
+                //放入缓存等待6个小时
+                cache.put(uuid,user.getUsername());
+
+                EmailUtil.sendHttpemail(html,subject,email);
+            }
+        });
+        thread.start();
     }
 
     public void updatePassword(User user, String oldpassword, String newpassword) {
@@ -198,5 +217,7 @@ public class UserService {
     public void updateUserAvatar(User user, String filekey) {
         user.setAvatar(filekey);
         userDao.update(user);
+        //将session中保存的user的avatar属性改为http://oi0ntmwcf.bkt.clouddn.com/+filekey
+        user.setAvatar(Config.get("qiniu.domain")+user.getAvatar());
     }
 }

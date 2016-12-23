@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import com.kaishengit.entity.User;
 import com.kaishengit.exception.ServiceException;
 import com.kaishengit.service.UserService;
+import com.kaishengit.util.Config;
 import com.kaishengit.web.BaseServlet;
 
 import javax.servlet.ServletException;
@@ -31,11 +32,14 @@ public class LoginServlet extends BaseServlet {
         String username = req.getParameter("username");
         String password = req.getParameter("password");
         String ip = req.getRemoteAddr();
+        Integer loginLimitTimes = 3;
         Map<String,Object> result = Maps.newHashMap();
         UserService userService = new UserService();
         try{
            User user = userService.login(username,password,ip);
             HttpSession session = req.getSession();
+            //将session中保存的user的avatar属性改为http://oi0ntmwcf.bkt.clouddn.com/+user.getAvatar()
+            user.setAvatar(Config.get("qiniu.domain")+user.getAvatar());
             session.setAttribute("curr_user",user);
 
             result.put("state","success");

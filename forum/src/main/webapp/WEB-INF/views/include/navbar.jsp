@@ -10,12 +10,12 @@
                 <c:when test="${not empty sessionScope.curr_user}">
                     <li>
                         <a href="/setting">
-                            <img id="navbar_avatar" src="http://oi0ntmwcf.bkt.clouddn.com/${sessionScope.curr_user.avatar}?imageView2/1/w/20/h/20"
+                            <img id="navbar_avatar" src="${sessionScope.curr_user.avatar}?imageView2/1/w/20/h/20"
                                  class="img-circle" alt="">
                         </a>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-plus"></i></a>
+                        <a href="/newpost"><i class="fa fa-plus"></i></a>
                     </li>
                     <li>
                         <a href="#"><i class="fa fa-bell"></i></a>

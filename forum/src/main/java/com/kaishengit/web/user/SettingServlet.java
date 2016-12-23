@@ -7,8 +7,6 @@ import com.kaishengit.service.UserService;
 import com.kaishengit.util.Config;
 import com.kaishengit.web.BaseServlet;
 import com.qiniu.util.Auth;
-import com.qiniu.util.StringMap;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -55,12 +53,11 @@ public class SettingServlet extends BaseServlet {
 
     public void updateEmail(User user,HttpServletRequest req, HttpServletResponse resp) throws IOException {
         String email =req.getParameter("email");
-
-        //TODO 修改state为0,让用户重新验证邮箱
         UserService userService = new UserService();
         userService.update(user,email);
         JsonResult jsonResult = new JsonResult();
         jsonResult.setState(JsonResult.SUCCESS);
+
         renderJSON(jsonResult,resp);
 
     }

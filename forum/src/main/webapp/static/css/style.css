@@ -121,3 +121,7 @@ body{
     text-decoration: none;
     color: #0e0e0e;
 }
+.topic-body img{
+    height:200px;
+    width: 200px;
+}

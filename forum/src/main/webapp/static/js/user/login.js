@@ -50,9 +50,19 @@ $(function () {
                 success:function (data) {
                     if(data.state=="success"){
                         alert("登录成功");
+
+
                         var redirect =getParameterByName("redirect");
                         if(redirect) {
-                            window.location.href = redirect;
+                            /*设置或者获取页面的标签值*/
+                            var hash = window.location.hash;
+                            console.log(hash);
+                            if(hash){
+                                window.location.href = redirect+hash;
+                            }else{
+                                window.location.href = redirect;
+                            }
+
                         } else {
                             window.location.href = "/home";
                         }

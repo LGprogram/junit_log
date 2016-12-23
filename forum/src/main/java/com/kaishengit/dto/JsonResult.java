@@ -15,7 +15,7 @@ public class JsonResult {
     public JsonResult() {
     }
 
-    public JsonResult(String state, Object data) {
+    public JsonResult(Object data) {
         this.state = SUCCESS;
         this.data = data;
     }
