@@ -4,8 +4,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by liu on 2016/12/19.
@@ -27,6 +26,26 @@ public class LoginFilter extends AbstractFilter {
 
         if(urlList!=null&&urlList.contains(requestUrl)){
             if(request.getSession().getAttribute("curr_user") == null) {
+//request.getParameterMap()中将包含你表单里面所有input标签的数据，以其name为key，以其value为值，如果你是以ajax提交的话，就是你自己组织的所有参数了,此时得到的Map是只读的，要用可写的需要使用putAll方法复制生成新的Map
+                Map<String,String[]> map = request.getParameterMap();
+                //Map接口没有自己的遍历方法，只能通过他的Set视图来遍历，
+                Set paramSet = map.entrySet();
+                Iterator<Map.Entry<String, String[]>> it = paramSet.iterator();
+                if(it.hasNext()){
+                    requestUrl +="?";
+                    while (it.hasNext()){
+                        Map.Entry<String,String[]> me = it.next();
+                        String key = me.getKey();
+                        String[] values = me.getValue();
+                        String param ="";
+                        for(int i= 0;i<values.length;i++){
+                            param = key + "=" + values[i] +"&";
+                            requestUrl += param;
+                        }
+
+                    }
+                    requestUrl = requestUrl.substring(0,requestUrl.length()-1);
+                }
                 //去登录页面
                 response.sendRedirect("/login?redirect="+requestUrl);
             } else {

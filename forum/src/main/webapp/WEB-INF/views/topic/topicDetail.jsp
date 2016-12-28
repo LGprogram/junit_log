@@ -37,24 +37,45 @@
             ${requestScope.topic.content}
         </div>
         <div class="topic-toolbar">
-            <ul class="unstyled inline pull-left">
-                <li><a href="">加入收藏</a></li>
-                <li><a href="">感谢</a></li>
-                <li><a href=""></a></li>
-            </ul>
+            <c:if test="${not empty sessionScope.curr_user}">
+                <ul class="unstyled inline pull-left">
+                    <c:choose>
+                        <c:when test="${not empty requestScope.fav}">
+                            <li><a href="javascript:;" id="favtopic">取消收藏</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="javascript:;" id="favtopic">加入收藏</a></li>
+                        </c:otherwise>
+                    </c:choose>
+                    <c:choose>
+                        <c:when test="${not empty requestScope.thank}">
+                            <li><a href="javascript:;" id="thanktopic">取消感谢</a></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><a href="javascript:;" id="thanktopic">感谢</a></li>
+                        </c:otherwise>
+                    </c:choose>
+
+                    <li><a href="/topicEdit?topicid=${requestScope.topic.id}">编辑</a></li>
+                </ul>
+            </c:if>
             <ul class="unstyled inline pull-right muted">
                 <li>${requestScope.topic.clicknum}次点击</li>
-                <li>${requestScope.topic.favnum}人收藏</li>
-                <li>${requestScope.topic.thankyounum}人感谢</li>
+                <li><span id="favSpan">${requestScope.topic.favnum}</span>人收藏</li>
+                <li><span id="thankSpan">${requestScope.topic.thankyounum}</span>人感谢</li>
             </ul>
         </div>
     </div>
     <!--box end--><%--已更改--%>
 
     <div class="box" style="margin-top:20px;">
-        <div class="talk-item muted" style="font-size: 12px">
-            ${fn:length(replyList)}个回复 | 直到<span id="lastreplytime">${topic.lastreplytime}</span>
-        </div>
+        <c:if test="${not empty sessionScope.curr_user}">
+            <c:if test="${fn:length(replyList)>0}">
+                <div class="talk-item muted" style="font-size: 12px">
+                    ${fn:length(replyList)}个回复 | 直到<span id="lastreplytime">${topic.lastreplytime}</span>
+                </div>
+            </c:if>
+        </c:if>
         <c:forEach items="${requestScope.replyList}" var="reply" varStatus="vs">
             <div class="talk-item">
                 <table class="talk-table">
@@ -63,10 +84,11 @@
                         <td width="50">
                             <img class="avatar" src="${reply.user.avatar}?imageView2/1/w/40/h/40" alt="">
                         </td>
-                        <td width="auto">
-                            <a href="" rel="xxx" style="font-size: 12px">${reply.user.username}</a> <span style="font-size: 12px" class="reply">${reply.replytime}</span>
+                        <td width="auto" rel="${vs.count}" class="re_td">
+                            <a href=""  style="font-size: 12px">${reply.user.username}</a> <span style="font-size: 12px" class="reply">${reply.replytime}</span>
                             <br>
                             <p style="font-size: 14px">${reply.content}</p>
+
                         </td>
                         <td width="70" align="right" style="font-size: 12px">
                             <a href="javascript:;" rel="${vs.count}" class="replylink" title="回复"><i class="fa fa-reply"></i></a>&nbsp;
@@ -76,13 +98,7 @@
                 </table>
             </div>
         </c:forEach>
-
-
-
-
-
     </div>
-
     <c:choose>
         <c:when test="${not empty sessionScope.curr_user}">
             <div class="box" style="margin:20px 0px;">
@@ -104,8 +120,6 @@
             </div>
         </c:otherwise>
     </c:choose>
-
-
 </div>
 <!--container end-->
 <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
@@ -116,14 +130,45 @@
 <script src="/static/js/highlight.pack.js"></script>
 <script src="//cdn.bootcss.com/moment.js/2.10.6/moment.min.js"></script>
 <script src="//cdn.bootcss.com/moment.js/2.10.6/locale/zh-cn.js"></script>
+<script src="/static/js/user/notify.js"></script>
 <script>
     $(function(){
-        var editor = new Simditor({
-            textarea: $('#editor'),
-            toolbar:false
-            //optional options
-           /* hljs.initHighlightingOnLoad();*/
-        });
+        <c:if test="${not empty sessionScope.curr_user}">
+            var editor = new Simditor({
+                textarea: $('#editor'),
+                toolbar:false
+                //optional options
+                /* hljs.initHighlightingOnLoad();*/
+            });
+            $(".replylink").click(function () {
+                var count = $(this).attr("rel");
+                var html = "回复 <a href='#reply"+count+"'>"+count+"</a> 楼：";
+                editor.setValue(html+editor.getValue());
+                window.location.href="#reply";
+            });
+            //复杂的回复
+           /* $(".replylink").click(function () {
+               $(this).parent().parent().find(".re_td").append(function () {
+
+                    var html = "<a href='#'>${sessionScope.curr_user.username}:</a> ";
+                    /!*var html2 ="<div width='auto' class='newtr'><input type='text' class='span8' id='input_newtodo'placeholder='+添加一个回复'></div>";*!/
+                    var html2 ="<div width='auto'><div><img class='avatar' src='${sessionScope.curr_user.avatar}?imageView2/1/w/20/h/20'><a href='#'>${sessionScope.curr_user.username}:</a></div><input type='text' class='span8' id='input_newreply'placeholder='+添加一个回复'></div>";
+                    /!*html2 = $(html2).find("input").val(html);*!/
+//
+                    return html2;
+
+                });
+               $("#input_newreply").keydown(function (event) {
+
+                   if(event.which ==13){
+                    $.post("/rereply").done(function () {
+                        
+                    });
+                   }
+               })
+            });*/
+
+        </c:if>
         hljs.initHighlightingOnLoad();
 
         $("#createtime").text(moment($("#createtime").text()).fromNow());
@@ -132,17 +177,59 @@
             var time = $(this).text();
             return moment(time).fromNow();
         });
-
-        $(".replylink").click(function () {
-            var count = $(this).attr("rel");
-            var html = "回复 <a href='#reply"+count+"'>"+count+"</a> 楼：";
-            editor.setValue(html+editor.getValue());
-            window.location.href="#reply";
-        });
-
-
         $("#replyBtn").click(function () {
             $("#replyForm").submit();
+        });
+
+        $("#favtopic").click(function () {
+            var $this = $(this);
+            var action="";
+            if($this.text()=="加入收藏"){
+                action="fav";
+            }else{
+                action="unfav";
+            }
+            $.post("/topicFav",{"action":action,"topicid":${topic.id}})
+                .done(function (json) {
+                    if(json.state=="success"){
+                        if(action == "fav"){
+                            $this.text("取消收藏");
+                        }else{
+                            $this.text("加入收藏");
+                        }
+                        $("#favSpan").text(json.data.favnum);
+                    }else{
+                        alert(json.message)
+                    }
+                })
+                .error(function () {
+                        alert("服务器错误");
+                });
+        });
+        $("#thanktopic").click(function () {
+            var $this = $(this);
+            var action="";
+            if($this.text()=="感谢"){
+                action="thank";
+            }else{
+                action="unthank";
+            }
+            $.post("/topicThank",{"action":action,"topicid":${topic.id}})
+                .done(function (json) {
+                    if(json.state=="success"){
+                        if(action == "thank"){
+                            $this.text("取消感谢");
+                        }else{
+                            $this.text("感谢");
+                        }
+                        $("#thankSpan").text(json.data.thankyounum);
+                    }else{
+                        alert(json.message)
+                    }
+                })
+                .error(function () {
+                    alert("服务器错误");
+                });
         });
     });
 </script>

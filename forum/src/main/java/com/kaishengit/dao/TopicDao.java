@@ -9,9 +9,12 @@ import org.apache.commons.dbutils.BasicRowProcessor;
 import org.apache.commons.dbutils.handlers.AbstractListHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
+import org.apache.commons.lang3.StringUtils;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -34,18 +37,48 @@ public class TopicDao {
     }
 
     public List<Reply> findReplyListByTopicId(String topicid) {
-        String sql = "select tu.id,tu.username,tu.avatar,tr.* from t_user as tu,t_reply as tr where tr.userid = tu.id and tr.topicid=?";
+        String sql = "select tu.id,tu.username,tu.avatar,tr.* from t_user as tu,t_reply as tr where tr.userid = tu.id and tr.topicid=? order by replytime";
         return DbHelp.query(sql, new AbstractListHandler<Reply>() {
             @Override
             protected Reply handleRow(ResultSet rs) throws SQLException {
                 Reply reply = new BasicRowProcessor().toBean(rs,Reply.class);
                 User user = new User();
-                user.setId(rs.getInt("id"));
+                user.setId(rs.getInt(1));
                 user.setUsername(rs.getString("username"));
                 user.setAvatar(Config.get("qiniu.domain")+rs.getString("avatar"));
                 reply.setUser(user);
                 return reply;
             }
         },Integer.valueOf(topicid));
+    }
+
+    public Integer count() {
+        String sql = "select count(*) from t_topic";
+        return DbHelp.query(sql,new ScalarHandler<Long>()).intValue();
+    }
+
+    public List<Topic> findTopicListByPage(String nodeid, int start, int pageSize) {
+        String sql = "SELECT tu.username,tu.avatar,tt.* FROM t_user tu,t_topic tt WHERE tt.userid = tu.id ";
+        List<Object> list = new ArrayList<>();
+        String where = "";
+        if(StringUtils.isNotEmpty(nodeid)){
+            where += "AND nodeid = ? ";
+            list.add(nodeid);
+        }
+        where +="ORDER BY lastreplytime DESC LIMIT ?,?";
+        list.add(start);
+        list.add(pageSize);
+        sql += where;
+        return DbHelp.query(sql, new AbstractListHandler<Topic>() {
+            @Override
+            protected Topic handleRow(ResultSet rs) throws SQLException {
+                Topic topic = new BasicRowProcessor().toBean(rs,Topic.class);
+                User user = new User();
+                user.setUsername(rs.getString("username"));
+                user.setAvatar(Config.get("qiniu.domain")+rs.getString("avatar"));
+                topic.setUser(user);
+                return topic;
+            }
+        },list.toArray());
     }
 }

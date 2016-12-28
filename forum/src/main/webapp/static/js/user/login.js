@@ -15,6 +15,13 @@ $(function () {
     $("#loginBtn").click(function () {
         $("#loginForm").submit();
     });
+    //回车登录事件
+    $("#password").keydown(function (event) {
+        if(event.which ==13){
+            $("#loginForm").submit();
+        }
+    })
+
     $("#loginForm").validate({
         errorElement:'span',
         errorClass:'text-error',

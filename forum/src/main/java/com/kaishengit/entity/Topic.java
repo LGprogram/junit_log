@@ -1,6 +1,8 @@
 package com.kaishengit.entity;
 
 
+import org.joda.time.DateTime;
+
 import java.sql.Timestamp;
 
 /**
@@ -124,5 +126,19 @@ public class Topic {
 
     public void setNode(Node node) {
         this.node = node;
+    }
+
+    /**
+     * 帖子在发表10分钟内并且无人回复时可以修改
+     * @return
+     */
+    public boolean isEdit(){
+        //时间的抽象表示类，相当于File类
+        DateTime dateTime = new DateTime(getCreatetime());
+        if(dateTime.plusMinutes(10).isAfterNow()&&getReplynum()==0){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

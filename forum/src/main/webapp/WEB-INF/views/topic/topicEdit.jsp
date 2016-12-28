@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>发布新主题</title>
+    <title>修改主题</title>
     <link href="http://cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="http://cdn.bootcss.com/bootstrap/2.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/static/css/style.css">
@@ -16,23 +16,21 @@
 <div class="container">
     <div class="box">
         <div class="box-header">
-            <span class="title"><i class="fa fa-plus"></i> 发布新主题</span>
+            <span class="title"><i class="fa fa-edit"></i> 发布新主题</span>
         </div>
 
         <form action="" style="padding: 20px" id="topicForm" >
             <label class="control-label">主题标题</label>
-            <input type="text" name="title" style="width: 100%;box-sizing: border-box;height: 30px" placeholder="请输入主题标题，如果标题能够表达完整内容，则正文可以为空">
+            <input type="hidden" id="topicid" name="topicid" value="${requestScope.topic.id}">
+            <input type="text" name="title" style="width: 100%;box-sizing: border-box;height: 30px" value="${requestScope.topic.title}" >
             <label class="control-label">正文</label>
-            <textarea name="content" id="editor"></textarea>
+            <textarea name="content" id="editor">${requestScope.topic.content}</textarea>
 
             <select name="nodeid" id="nodeid" style="margin-top:15px;">
-                <option value="">请选择节点</option>
+                <option  value="">请选择节点</option>
                 <c:forEach items="${requestScope.nodeList}" var="node">
-                    <option value="${node.id}">${node.nodename}</option>
+                    <option ${requestScope.topic.nodeid== node.id?'selected':''} value="${node.id}">${node.nodename}</option>
                 </c:forEach>
-                <%--<option value="">问与答</option>
-                <option value="">分享</option>
-                <option value="">Java</option>--%>
             </select>
 
         </form>
@@ -95,7 +93,7 @@
             },
             submitHandler:function (form) {
                 $.ajax({
-                    url:"/newpost",
+                    url:"/topicEdit",
                     type:"post",
                     data:$(form).serialize(),
                     beforeSend:function () {
@@ -105,11 +103,11 @@
                         if(json.state="success"){
                             window.location.href="/topicDetail?topicid="+json.data.id;
                         }else{
-                            alert("新增主题异常");
+                            alert("修改主题异常");
                         }
                     },
                     error:function () {
-                       alert("服务器异常");
+                        alert("服务器异常");
                     },
                     complete:function () {
                         $("#topicBtn").text("发布主题").removeAttr("disabled");
@@ -123,3 +121,4 @@
 
 </body>
 </html>
+
