@@ -4,14 +4,20 @@ import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.kaishengit.dao.Login_LogDao;
 import com.kaishengit.dao.UserDao;
+import com.kaishengit.entity.Login_Log;
+import com.kaishengit.entity.Topic;
 import com.kaishengit.entity.User;
 import com.kaishengit.exception.ServiceException;
 import com.kaishengit.util.Config;
 import com.kaishengit.util.EmailUtil;
+import com.kaishengit.util.Page;
+import com.kaishengit.vo.UserVo;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -219,5 +225,47 @@ public class UserService {
         userDao.update(user);
         //将session中保存的user的avatar属性改为http://oi0ntmwcf.bkt.clouddn.com/+filekey
         user.setAvatar(Config.get("qiniu.domain")+user.getAvatar());
+    }
+
+    public Page<UserVo> findByPageNo(String p) {
+        Integer pageNo = StringUtils.isNumeric(p) ? Integer.valueOf(p) : 1;
+        Integer totals = userDao.count();
+        Page<UserVo> page = new Page<>(totals, pageNo);
+        int start = (pageNo - 1) * page.getPageSize();
+        List<User> userList = userDao.findAll(start,page.getPageSize());
+        List<UserVo> items = new ArrayList<>();
+        for(User user:userList){
+            UserVo userVo = new UserVo();
+            userVo.setUserId(user.getId());
+            userVo.setUsername(user.getUsername());
+            userVo.setCreatetime(user.getCreatetime());
+            userVo.setUserState(user.getState());
+            Login_Log login_log = login_logDao.findByUserId(user.getId());
+            userVo.setLoginIP(login_log.getIp());
+            userVo.setLastLoginTime(login_log.getLogintime());
+            items.add(userVo);
+        }
+        page.setItems(items);
+        return page;
+    }
+
+    public void doActive(String action, String userId) {
+        if(StringUtils.isNumeric(userId)){
+            User user = userDao.findById(Integer.valueOf(userId));
+            if(user!=null){
+                if("unable".equals(action)){
+                    user.setState(User.USERSTATE_ACTIVE);
+                    userDao.update(user);
+                }else{
+                    user.setState(User.USERSTATE_DISABLED);
+                    userDao.update(user);
+                }
+            }else{
+                throw new ServiceException("参数错误");
+            }
+
+        }else{
+            throw new ServiceException("参数错误");
+        }
     }
 }

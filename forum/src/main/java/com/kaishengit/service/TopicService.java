@@ -20,6 +20,7 @@ public class TopicService {
     private NodeDao nodeDao = new NodeDao();
     private FavDao favDao = new FavDao();
     private ThankDao thankDao = new ThankDao();
+    private ReplyDao replyDao = new ReplyDao();
 
 
     public Topic addNewTopic(String title, String content, Integer nodeid, Integer userid) {
@@ -206,5 +207,39 @@ public class TopicService {
         return page;
 
 
+    }
+
+    public void deleteTopicByID(String id) {
+        if(StringUtils.isNumeric(id)){
+            Topic topic = topicDao.findTopicById(Integer.valueOf(id));
+            if(topic!=null){
+            //删掉帖子所有的回复 TODO 给回复的人发消息
+            replyDao.delReplyBYTopicId(topic.getId());
+            //更改节点下的topicnum
+            //TODO 更新数据库：fav、thank，给点fav、thank对应的用户发消息
+                Integer nodeid = topic.getNodeid();
+                Node node = nodeDao.findById(nodeid);
+                node.setTopicnum(node.getTopicnum()-1);
+                nodeDao.update(node);
+
+            //删掉帖子 TODO 给发帖人信息
+                topicDao.delTopicById(topic.getId());
+            }
+
+        }else{
+            throw new ServiceException("参数错误");
+        }
+
+
+    }
+
+    public Page<TopicReplyCount> getTopicAndReplyNumByDayList(String p) {
+        Integer pageNo = StringUtils.isNumeric(p) ? Integer.valueOf(p) : 1;
+        Integer totals =topicDao.countTopicByDay();
+        Page<TopicReplyCount> page = new Page<>(totals,pageNo);
+        Integer start = (pageNo - 1) * page.getPageSize();
+        List<TopicReplyCount> items = topicDao.findTopicReplyCountList(start,page.getPageSize());
+        page.setItems(items);
+        return page;
     }
 }

@@ -2,12 +2,14 @@ package com.kaishengit.dao;
 
 import com.kaishengit.entity.Reply;
 import com.kaishengit.entity.Topic;
+import com.kaishengit.entity.TopicReplyCount;
 import com.kaishengit.entity.User;
 import com.kaishengit.util.Config;
 import com.kaishengit.util.DbHelp;
 import org.apache.commons.dbutils.BasicRowProcessor;
 import org.apache.commons.dbutils.handlers.AbstractListHandler;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.apache.commons.lang3.StringUtils;
 
@@ -80,5 +82,23 @@ public class TopicDao {
                 return topic;
             }
         },list.toArray());
+    }
+
+    public void delTopicById(Integer id) {
+        String sql = "delete from t_topic where id = ?";
+        DbHelp.update(sql,id);
+    }
+
+    public Integer countTopicByDay() {
+        String sql = "select count(*) from (select count(*) from t_topic group by DATE_FORMAT(createtime,'%y-%m-%d')) as topicCount";
+        return DbHelp.query(sql,new ScalarHandler<Long>()).intValue();
+    }
+
+    public List<TopicReplyCount> findTopicReplyCountList(Integer start, int pageSize) {
+        String sql = "SELECT COUNT(*) topicnum,DATE_FORMAT(createtime,'%y-%m-%d') 'time',(SELECT COUNT(*) FROM t_reply\n" +
+                " WHERE DATE_FORMAT(createtime,'%y-%m-%d') = DATE_FORMAT(t_topic.createtime,'%y-%m-%d')) 'replynum' FROM t_topic\n" +
+                "  GROUP BY (DATE_FORMAT(createtime,'%y-%m-%d'))\n" +
+                "  ORDER BY (DATE_FORMAT(createtime,'%y-%m-%d')) DESC LIMIT ?,?";
+        return DbHelp.query(sql,new BeanListHandler<TopicReplyCount>(TopicReplyCount.class),start,pageSize);
     }
 }

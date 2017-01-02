@@ -25,4 +25,14 @@ public class NodeDao {
         String sql ="UPDATE t_node SET nodename=?,topicnum=? WHERE id=?";
         DbHelp.update(sql,node.getNodename(),node.getTopicnum(),node.getId());
     }
+
+    public void delNodeById(Integer id) {
+        String sql = "delete from t_node where id = ?";
+        DbHelp.update(sql,id);
+    }
+
+    public Node findByNodename(String nodename) {
+        String sql = "select * from t_node where nodename = ?";
+        return DbHelp.query(sql,new BeanHandler<Node>(Node.class),nodename);
+    }
 }
