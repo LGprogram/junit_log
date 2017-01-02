@@ -96,7 +96,7 @@ public class TopicDao {
 
     public List<TopicReplyCount> findTopicReplyCountList(Integer start, int pageSize) {
         String sql = "SELECT COUNT(*) topicnum,DATE_FORMAT(createtime,'%y-%m-%d') 'time',(SELECT COUNT(*) FROM t_reply\n" +
-                " WHERE DATE_FORMAT(createtime,'%y-%m-%d') = DATE_FORMAT(t_topic.createtime,'%y-%m-%d')) 'replynum' FROM t_topic\n" +
+                " WHERE DATE_FORMAT(replytime,'%y-%m-%d') = DATE_FORMAT(t_topic.createtime,'%y-%m-%d')) 'replynum' FROM t_topic\n" +
                 "  GROUP BY (DATE_FORMAT(createtime,'%y-%m-%d'))\n" +
                 "  ORDER BY (DATE_FORMAT(createtime,'%y-%m-%d')) DESC LIMIT ?,?";
         return DbHelp.query(sql,new BeanListHandler<TopicReplyCount>(TopicReplyCount.class),start,pageSize);

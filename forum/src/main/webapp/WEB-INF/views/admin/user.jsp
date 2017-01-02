@@ -19,7 +19,7 @@
             <th>注册时间</th>
             <th>最后登录时间</th>
             <th>最后登录IP</th>
-            <th>操作</th>
+            <th>用户状态</th>
         </tr>
         </thead>
         <tbody>
