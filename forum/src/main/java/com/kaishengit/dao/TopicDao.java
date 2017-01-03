@@ -67,7 +67,7 @@ public class TopicDao {
             where += "AND nodeid = ? ";
             list.add(nodeid);
         }
-        where +="ORDER BY lastreplytime DESC LIMIT ?,?";
+        where +="ORDER BY tt.lastreplytime DESC LIMIT ?,?";
         list.add(start);
         list.add(pageSize);
         sql += where;

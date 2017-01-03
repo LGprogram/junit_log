@@ -111,9 +111,9 @@
 <!--container end-->
 <script src="/static/js/jquery-1.11.1.js"></script>
 <script src="/static/js/jquery.validate.min.js"></script>
-<script src="/static/js/user/setting.js"></script>
 <script src="/static/js/uploader/webuploader.min.js"></script>
 <script src="/static/js/user/notify.js"></script>
+<script src="/static/js/user/setting.js"></script>
 <script>
     $(function () {
         var uploader = WebUploader.create({
