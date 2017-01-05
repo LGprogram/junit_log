@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaishengit.mapper.EmployeeMapper">
+    <!--需要配置结果集映射时用注释的-->
+    <select id="findById" parameterType="int" resultMap="empmap">
+    <!--<select id="findById" parameterType="int" resultType="Employee">-->
+        SELECT te.id,empname,deptid,
+        td.id as 'dept.id',deptname as 'dept.deptname'
+        FROM t_employee te
+        INNER JOIN t_dept td  ON te.deptid = td.id
+        WHERE te.id=#{id}
+    </select>
+    <select id="findByDeptID" resultType="Employee">
+        SELECT * FROM t_employee WHERE deptid = #{deptid}
+    </select>
+    <!--配置结果集映射-->
+    <resultMap id="empmap" type="Employee">
+        <id column="id" property="id"/>
+        <result column="empname" property="empname"/>
+        <result column="deptid" property="deptid"/>
+        <association property="dept" javaType="Dept">
+            <id column="dept.id" property="id"/>
+            <result column="dept.deptname" property="deptname"/>
+        </association>
+    </resultMap>
+
+    <select id="findAll" resultMap="employeeMap">
+        select * from t_employee
+    </select>
+    <resultMap id="employeeMap" type="Employee">
+        <id column="id" property="id"/>
+        <result column="empname" property="empname"/>
+        <result column="deptid" property="deptid"/>
+        <association property="dept" javaType="Dept" column="deptid" select="com.kaishengit.mapper.DeptMapper.findById1"/>
+
+
+    </resultMap>
+</mapper>

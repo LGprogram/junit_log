@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaishengit.mapper.UserMapper">
+
+    <cache/>
+<select id="findById" parameterType="int" resultType="User">
+    select * from t_user where id = #{id}
+</select>
+<select id="findAll" resultType="User">
+    SELECT * from t_user
+</select>
+    <select id="findByUsernameAndPassword" resultType="User">
+      select * from t_user where username=#{name} and password=#{pwd}
+    </select>
+    <select id="findByUsernameAndPassword1" resultType="User">
+        select * from t_user where username=#{name}
+        <if test="pass!=null and pass!=''">
+            and password=#{pass}
+        </if>
+
+    </select>
+    <select id="findByParam" resultType="User">
+        select * from t_user
+        <where>
+            <if test="username!=null and username!=''">
+                username=#{username}
+            </if>
+            <if test="password!=null and password!=''">
+                and password=#{password}
+            </if>
+        </where>
+    </select>
+    <select id="findByParam1" resultType="User">
+        select * from t_user
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="username!=null and username != ''">
+                username=#{username}
+            </if>
+            <if test="password!=null and password !='' ">
+                and password=#{password}
+            </if>
+        </trim>
+    </select>
+    <select id="findByIds" resultType="User">
+        SELECT * from t_user where id IN
+        <foreach collection="list" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+    <!--
+        useGeneratedKeys:true 表示使用自动增长的主键
+        keyProperty:id 将自动增长的主键赋值给parameterType对应类型对象的id属性
+    -->
+<insert id="save" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+    INSERT  INTO  t_user(username,password) VALUES (#{username},#{password})
+</insert>
+    <insert id="save1" >
+        insert into t_user(username,password) VALUES
+        <foreach collection="list" item="user"  separator=",">
+            (#{user.username},#{ user.password})
+        </foreach>
+    </insert>
+<update id="update" parameterType="User">
+    UPDATE t_user set username = #{username},password = #{password} where id = #{id}
+</update>
+    <update id="update1">
+        update t_user
+        <trim prefix="set" suffixOverrides="," suffix="where id=#{id}">
+            <if test="username!=null and username!=''">
+                username = #{username},
+            </if>
+            <if test="password!=null and password !=''">
+                password = #{password},
+            </if>
+        </trim>
+    </update>
+<delete id="del" parameterType="int">
+    DELETE form t_user where id = #{id}
+</delete>
+</mapper>
