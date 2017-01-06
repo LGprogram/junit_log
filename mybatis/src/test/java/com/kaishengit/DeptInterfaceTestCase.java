@@ -39,4 +39,17 @@ public class DeptInterfaceTestCase {
             }
         }
     }
+    @Test
+    public void findById2(){
+        SqlSession sqlSession = SqlSessionFactoryUtil.getSqlSession();
+        DeptMapper deptMapper = sqlSession.getMapper(DeptMapper.class);
+        Dept dept = deptMapper.findById2(12);
+        System.out.println(dept);
+        List<Employee> employees = dept.getEmployeeList();
+
+        for(Employee employee:employees){
+            System.out.println(employee.getEmpname());
+        }
+    };
+
 }

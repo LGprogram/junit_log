@@ -32,10 +32,12 @@
         </environment>
 
     </environments>
-    <!--加载Mapper.xml-->
+    <!--所有 mapper（映射器）的列表，加载Mapper.xml，这些 mapper
+的 XML 文件包含 SQL 代码和映射定义信息-->
     <mappers>
         <mapper resource="mapper/UserMapper.xml"/>
         <mapper resource="mapper/EmployeeMapper.xml"/>
         <mapper resource="mapper/DeptMapper.xml"/>
+        <mapper class="com.kaishengit.mapper.AccountMapper"/>
     </mappers>
 </configuration>

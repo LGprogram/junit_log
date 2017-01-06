@@ -45,4 +45,14 @@ public class EmployeeInterfaceTestCase {
 
         sqlSession.close();
     }
+    @Test
+    public  void  findById1(){
+        SqlSession sqlSession = SqlSessionFactoryUtil.getSqlSession();
+        EmployeeMapper employeeMapper = sqlSession.getMapper(EmployeeMapper.class);
+        Employee employee = employeeMapper.findById1(23);
+        System.out.println(employee);
+        Dept dept = employee.getDept();
+        System.out.println(dept.getDeptname());
+
+    }
 }

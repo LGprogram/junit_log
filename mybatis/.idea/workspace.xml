@@ -20,53 +20,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/UserMapper.java">
+      <file leaf-file-name="DeptMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/DeptMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyBaitsInterfaceTestCase.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/com/kaishengit/MyBaitsInterfaceTestCase.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="162" column="0" lean-forward="true" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/pojo/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="29" selection-end-line="7" selection-end-column="41" />
+            <state relative-caret-position="115">
+              <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml">
+      <file leaf-file-name="DeptInterfaceTestCase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/kaishengit/DeptInterfaceTestCase.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+            <state relative-caret-position="202">
+              <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmployeeMapper.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/EmployeeMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="318">
+              <caret line="28" column="35" lean-forward="true" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmployeeInterfaceTestCase.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/kaishengit/EmployeeInterfaceTestCase.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="347">
+              <caret line="51" column="47" lean-forward="true" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeptMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/DeptMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="116">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding>
-                <marker date="1483625274858" expanded="true" signature="321:358" ph="select * fro... t_user" />
-                <marker date="1483625274858" expanded="true" signature="413:433" ph="SELECT * fro... t_user" />
-                <marker date="1483625274858" expanded="true" signature="512:575" ph="select * fro... t_user" />
-                <marker date="1483625274858" expanded="true" signature="1608:1640" ph="SELECT * fro... t_user" />
-                <marker date="1483625274858" expanded="true" signature="1608:1657" ph="SELECT * fro... t_user" />
-                <marker date="1483625274858" expanded="true" signature="1974:2046" ph="INSERT INTO t_user" />
-                <marker date="1483625274858" expanded="true" signature="2326:2406" ph="UPDATE t_use... " />
+                <marker date="1483671156106" expanded="true" signature="274:437" ph="SELECT te.id... t_employee" />
+                <marker date="1483671156106" expanded="true" signature="907:944" ph="select * fro... t_dept" />
+                <marker date="1483671156106" expanded="true" signature="1015:1035" ph="select * fro... t_dept" />
               </folding>
             </state>
           </provider>
@@ -100,17 +102,20 @@
         <option value="$PROJECT_DIR$/src/test/java/com/kaishengit/JdbcTestCase.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kaishengit/pojo/Employee.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/kaishengit/pojo/Dept.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mybatis.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/UserMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/EmployeeMapper.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/EmployeeMapper.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/com/kaishengit/EmployeeInterfaceTestCase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/DeptMapper.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/DeptMapper.xml" />
-        <option value="$PROJECT_DIR$/src/test/java/com/kaishengit/DeptInterfaceTestCase.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/kaishengit/pojo/User.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/kaishengit/MyBaitsInterfaceTestCase.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mybatis.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kaishengit/pojo/Account.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/kaishengit/AccountInterfaceTestCase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/AccountMapper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/kaishengit/DeptInterfaceTestCase.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/DeptMapper.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/kaishengit/EmployeeInterfaceTestCase.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/DeptMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/EmployeeMapper.java" />
       </list>
     </option>
   </component>
@@ -192,6 +197,158 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaishengit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaishengit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaishengit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pojo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mybatis" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kaishengit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mapper" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
@@ -206,8 +363,8 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="js.eslint.eslintPackage" value="" />
   </component>
-  <component name="RunManager" selected="JUnit.MyBaitsInterfaceTestCase.findById">
-    <configuration default="false" name="MyBaitsInterfaceTestCase.save1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.EmployeeInterfaceTestCase.findById1">
+    <configuration default="false" name="AccountInterfaceTestCase.insert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.kaishengit.*" />
@@ -218,8 +375,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.kaishengit" />
-      <option name="MAIN_CLASS_NAME" value="com.kaishengit.MyBaitsInterfaceTestCase" />
-      <option name="METHOD_NAME" value="save1" />
+      <option name="MAIN_CLASS_NAME" value="com.kaishengit.AccountInterfaceTestCase" />
+      <option name="METHOD_NAME" value="insert" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -233,7 +390,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="MyBaitsInterfaceTestCase.findByIds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="AccountInterfaceTestCase.save" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.kaishengit.*" />
@@ -244,8 +401,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.kaishengit" />
-      <option name="MAIN_CLASS_NAME" value="com.kaishengit.MyBaitsInterfaceTestCase" />
-      <option name="METHOD_NAME" value="findByIds" />
+      <option name="MAIN_CLASS_NAME" value="com.kaishengit.AccountInterfaceTestCase" />
+      <option name="METHOD_NAME" value="save" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -259,7 +416,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="EmployeeInterfaceTestCase.findAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="AccountInterfaceTestCase.del" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.kaishengit.*" />
@@ -270,8 +427,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.kaishengit" />
-      <option name="MAIN_CLASS_NAME" value="com.kaishengit.EmployeeInterfaceTestCase" />
-      <option name="METHOD_NAME" value="findAll" />
+      <option name="MAIN_CLASS_NAME" value="com.kaishengit.AccountInterfaceTestCase" />
+      <option name="METHOD_NAME" value="del" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -285,7 +442,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="DeptInterfaceTestCase.findAll" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="DeptInterfaceTestCase.findById2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.kaishengit.*" />
@@ -297,7 +454,7 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.kaishengit" />
       <option name="MAIN_CLASS_NAME" value="com.kaishengit.DeptInterfaceTestCase" />
-      <option name="METHOD_NAME" value="findAll" />
+      <option name="METHOD_NAME" value="findById2" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -311,7 +468,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="MyBaitsInterfaceTestCase.findById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="EmployeeInterfaceTestCase.findById1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.kaishengit.*" />
@@ -322,8 +479,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.kaishengit" />
-      <option name="MAIN_CLASS_NAME" value="com.kaishengit.MyBaitsInterfaceTestCase" />
-      <option name="METHOD_NAME" value="findById" />
+      <option name="MAIN_CLASS_NAME" value="com.kaishengit.EmployeeInterfaceTestCase" />
+      <option name="METHOD_NAME" value="findById1" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -718,19 +875,19 @@
       <method />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="JUnit.MyBaitsInterfaceTestCase.save1" />
-      <item index="1" class="java.lang.String" itemvalue="JUnit.MyBaitsInterfaceTestCase.findByIds" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.EmployeeInterfaceTestCase.findAll" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.DeptInterfaceTestCase.findAll" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.MyBaitsInterfaceTestCase.findById" />
+      <item index="0" class="java.lang.String" itemvalue="JUnit.AccountInterfaceTestCase.insert" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.AccountInterfaceTestCase.save" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.AccountInterfaceTestCase.del" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.DeptInterfaceTestCase.findById2" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.EmployeeInterfaceTestCase.findById1" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.MyBaitsInterfaceTestCase.findById" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.DeptInterfaceTestCase.findAll" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.EmployeeInterfaceTestCase.findAll" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.MyBaitsInterfaceTestCase.findByIds" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.MyBaitsInterfaceTestCase.save1" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.EmployeeInterfaceTestCase.findById1" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.DeptInterfaceTestCase.findById2" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.AccountInterfaceTestCase.del" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.AccountInterfaceTestCase.save" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.AccountInterfaceTestCase.insert" />
       </list>
     </recent_temporary>
   </component>
@@ -745,48 +902,48 @@
       <option name="presentableId" value="Default" />
       <updated>1483496694455</updated>
       <workItem from="1483496714969" duration="17729000" />
-      <workItem from="1483522357370" duration="39227000" />
+      <workItem from="1483522357370" duration="47155000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DeptInterfaceTestCase_findAll - 2017.01.05 at 21h 20m 52s.xml">
-      <configuration name="DeptInterfaceTestCase.findAll" configurationId="JUnit" />
+    <history-entry file="AccountInterfaceTestCase_del - 2017.01.06 at 10h 03m 19s.xml">
+      <configuration name="AccountInterfaceTestCase.del" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="EmployeeInterfaceTestCase_findAll - 2017.01.05 at 21h 04m 10s.xml">
-      <configuration name="EmployeeInterfaceTestCase.findAll" configurationId="JUnit" />
+    <history-entry file="AccountInterfaceTestCase_insert - 2017.01.06 at 09h 58m 38s.xml">
+      <configuration name="AccountInterfaceTestCase.insert" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyBaitsInterfaceTestCase_findById - 2017.01.05 at 22h 02m 13s.xml">
-      <configuration name="MyBaitsInterfaceTestCase.findById" configurationId="JUnit" />
+    <history-entry file="AccountInterfaceTestCase_save - 2017.01.06 at 09h 58m 47s.xml">
+      <configuration name="AccountInterfaceTestCase.save" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyBaitsInterfaceTestCase_findById - 2017.01.05 at 22h 06m 25s.xml">
-      <configuration name="MyBaitsInterfaceTestCase.findById" configurationId="JUnit" />
+    <history-entry file="AccountInterfaceTestCase_save - 2017.01.06 at 09h 59m 47s.xml">
+      <configuration name="AccountInterfaceTestCase.save" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyBaitsInterfaceTestCase_findById - 2017.01.05 at 22h 07m 03s.xml">
-      <configuration name="MyBaitsInterfaceTestCase.findById" configurationId="JUnit" />
+    <history-entry file="AccountInterfaceTestCase_update - 2017.01.06 at 09h 56m 37s.xml">
+      <configuration name="AccountInterfaceTestCase.update" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyBaitsInterfaceTestCase_findById - 2017.01.05 at 22h 07m 35s.xml">
-      <configuration name="MyBaitsInterfaceTestCase.findById" configurationId="JUnit" />
+    <history-entry file="AccountInterfaceTestCase_update - 2017.01.06 at 09h 57m 28s.xml">
+      <configuration name="AccountInterfaceTestCase.update" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyBaitsInterfaceTestCase_findById - 2017.01.05 at 22h 08m 04s.xml">
-      <configuration name="MyBaitsInterfaceTestCase.findById" configurationId="JUnit" />
+    <history-entry file="DeptInterfaceTestCase_findById2 - 2017.01.06 at 10h 36m 51s.xml">
+      <configuration name="DeptInterfaceTestCase.findById2" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyBaitsInterfaceTestCase_findById - 2017.01.05 at 22h 10m 30s.xml">
-      <configuration name="MyBaitsInterfaceTestCase.findById" configurationId="JUnit" />
+    <history-entry file="DeptInterfaceTestCase_findById2 - 2017.01.06 at 10h 37m 33s.xml">
+      <configuration name="DeptInterfaceTestCase.findById2" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyBaitsInterfaceTestCase_findById - 2017.01.05 at 22h 11m 10s.xml">
-      <configuration name="MyBaitsInterfaceTestCase.findById" configurationId="JUnit" />
+    <history-entry file="EmployeeInterfaceTestCase_findById1 - 2017.01.06 at 10h 51m 03s.xml">
+      <configuration name="EmployeeInterfaceTestCase.findById1" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MyBaitsInterfaceTestCase_findByIds - 2017.01.05 at 20h 39m 08s.xml">
-      <configuration name="MyBaitsInterfaceTestCase.findByIds" configurationId="JUnit" />
+    <history-entry file="EmployeeInterfaceTestCase_findById1 - 2017.01.06 at 10h 52m 39s.xml">
+      <configuration name="EmployeeInterfaceTestCase.findById1" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56956000" />
+    <option name="totallyTimeSpent" value="64884000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -809,7 +966,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6535948" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25037822" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25037822" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -862,7 +1019,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="8" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -918,14 +1075,6 @@
             <marker date="1483625274858" expanded="true" signature="1974:2046" ph="INSERT INTO t_user" />
             <marker date="1483625274858" expanded="true" signature="2326:2406" ph="UPDATE t_use... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/util/SqlSessionFactoryUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="696">
-          <caret line="34" column="5" lean-forward="false" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1001,22 +1150,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="40" column="16" lean-forward="true" selection-start-line="40" selection-start-column="16" selection-end-line="40" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/pojo/Dept.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/EmployeeMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
@@ -1025,52 +1158,6 @@
             <marker date="1483621356191" expanded="true" signature="398:585" ph="SELECT te.id... t_employee" />
             <marker date="1483621356191" expanded="true" signature="661:710" ph="SELECT * FRO... t_employee" />
             <marker date="1483621356191" expanded="true" signature="1201:1225" ph="select * fro... t_employee" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/kaishengit/EmployeeInterfaceTestCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="86">
-          <caret line="32" column="9" lean-forward="false" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/EmployeeMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="13" column="29" lean-forward="true" selection-start-line="13" selection-start-column="29" selection-end-line="13" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/DeptMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/kaishengit/DeptInterfaceTestCase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="28" column="9" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/DeptMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="32" column="9" lean-forward="true" selection-start-line="32" selection-start-column="9" selection-end-line="32" selection-end-column="9" />
-          <folding>
-            <marker date="1483622443502" expanded="true" signature="274:437" ph="SELECT te.id... t_employee" />
-            <marker date="1483622443502" expanded="true" signature="906:943" ph="select * fro... t_dept" />
-            <marker date="1483622443502" expanded="true" signature="1013:1033" ph="select * fro... t_dept" />
           </folding>
         </state>
       </provider>
@@ -1116,6 +1203,123 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/util/SqlSessionFactoryUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mybatis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="40" column="58" lean-forward="false" selection-start-line="40" selection-start-column="58" selection-end-line="40" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/pojo/Account.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+          <folding>
+            <element signature="e#348#349#0" expanded="true" />
+            <element signature="e#373#374#0" expanded="true" />
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#438#439#0" expanded="true" />
+            <element signature="e#472#473#0" expanded="true" />
+            <element signature="e#502#503#0" expanded="true" />
+            <element signature="e#548#549#0" expanded="true" />
+            <element signature="e#586#587#0" expanded="true" />
+            <element signature="e#620#621#0" expanded="true" />
+            <element signature="e#650#651#0" expanded="true" />
+            <element signature="e#696#697#0" expanded="true" />
+            <element signature="e#734#735#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/kaishengit/AccountInterfaceTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="54" column="1" lean-forward="true" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.0/mybatis-3.4.0.jar!/org/apache/ibatis/annotations/Options.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="41" column="13" lean-forward="true" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/AccountMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="608">
+          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/pojo/Dept.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="10" column="39" lean-forward="false" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/DeptMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="115">
+          <caret line="15" column="12" lean-forward="true" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/DeptMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="116">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <marker date="1483671156106" expanded="true" signature="274:437" ph="SELECT te.id... t_employee" />
+            <marker date="1483671156106" expanded="true" signature="907:944" ph="select * fro... t_dept" />
+            <marker date="1483671156106" expanded="true" signature="1015:1035" ph="select * fro... t_dept" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/kaishengit/DeptInterfaceTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/kaishengit/EmployeeInterfaceTestCase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="51" column="47" lean-forward="true" selection-start-line="51" selection-start-column="47" selection-end-line="51" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/kaishengit/mapper/EmployeeMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="28" column="35" lean-forward="true" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>

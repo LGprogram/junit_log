@@ -19,9 +19,11 @@
             <result column="deptid" property="deptid"/>
         </collection>
     </resultMap>
+
     <select id="findById1" resultType="Dept">
         select * from t_dept where id = #{id}
     </select>
+
     <select id="findAll" resultMap="deptMap1">
         select * from t_dept
     </select>
