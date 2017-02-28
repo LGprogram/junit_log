@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kaishengit.mapper.FranceMapper">
+
+    <insert id="save">
+        INSERT INTO t_france (type,state,create_user,remark,money,module,rent_serial_num,serial_num,create_date)
+        VALUES (#{type},#{state},#{createUser},#{remark},#{money},#{module},#{rentSerialNum},#{serialNum},#{createDate})
+    </insert>
+    <update id="update">
+        UPDATE t_france SET state=#{state},confim_user=#{confimUser},confim_date=#{confimDate} where id =#{id}
+    </update>
+    <select id="findAllByContain" resultType="com.kaishengit.pojo.France">
+        SELECT * from t_france where serial_num LIKE concat('%',#{date},'%')
+    </select>
+    <select id="findByQueryParam" resultType="com.kaishengit.pojo.France">
+        select * from t_france
+        <where>
+            <if test="day !='' and day != null">
+              create_date = #{day}
+            </if>
+        </where>
+        order by confim_date asc,create_date desc
+        limit ${start},${length}
+    </select>
+    <select id="count" resultType="java.lang.Long">
+        select COUNT(*) from t_france
+    </select>
+    <select id="filterCount" resultType="java.lang.Long">
+        SELECT COUNT(*) FROM  t_france where create_date = #{day}
+    </select>
+    <select id="findById" resultType="com.kaishengit.pojo.France">
+        SELECT * from t_france where id = #{id}
+    </select>
+    <select id="findAllByCreateDate" resultType="com.kaishengit.pojo.France">
+        select * from t_france where create_date = #{day}
+    </select>
+    <select id="findByDate" resultType="com.kaishengit.dto.EchartsResult">
+        SELECT module AS 'name',SUM(money) AS 'value' FROM t_france where confim_date = #{date} and type = #{type} GROUP BY module
+    </select>
+    <select id="findByQuery" resultType="com.kaishengit.dto.FranceDto">
+        SELECT confim_date AS 'date'
+,(SELECT  SUM(money)  FROM t_france AS ti WHERE ti.type='收入' AND ti.confim_date = tf.confim_date ) AS 'income' ,
+(SELECT  SUM(money) FROM t_france AS tfo WHERE tfo.type='支出'  AND tfo.confim_date = tf.confim_date )  AS 'expend'
+FROM t_france AS tf WHERE tf.confim_date LIKE concat('%','${month}','%') GROUP BY confim_date
+limit ${start},${length}
+    </select>
+    <select id="findByMonth" resultType="com.kaishengit.dto.FranceDto">
+        SELECT confim_date AS 'date'
+,(SELECT  SUM(money)  FROM t_france AS ti WHERE ti.type='收入' AND ti.confim_date = tf.confim_date ) AS 'income' ,
+(SELECT  SUM(money) FROM t_france AS tfo WHERE tfo.type='支出'  AND tfo.confim_date = tf.confim_date )  AS 'expend'
+FROM t_france AS tf WHERE tf.confim_date LIKE concat('%','${month}','%') GROUP BY confim_date
+    </select>
+    <select id="findYearReportByQuery" resultType="com.kaishengit.dto.FranceDto">
+        SELECT DATE_FORMAT(DATE,'%Y-%m') 'date',
+        SUM(income) income,SUM(expend) expend
+        FROM day_report WHERE DATE LIKE CONCAT('%','${year}','%') GROUP BY 'date'
+        limit ${start},${length}
+    </select>
+    <select id="findByYear" resultType="com.kaishengit.dto.FranceDto">
+        SELECT DATE_FORMAT(DATE,'%Y-%m') 'date',
+        SUM(income) income,SUM(expend) expend
+        FROM day_report WHERE DATE LIKE CONCAT('%','${year}','%') GROUP BY 'date'
+    </select>
+</mapper>

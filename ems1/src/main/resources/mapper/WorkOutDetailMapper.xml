@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kaishengit.mapper.WorkOutDetailMapper">
+    <insert id="bathSave">
+        INSERT INTO t_work_out_detail (work_type,reward,rent_num,rent_id,total) VALUES
+        <foreach collection="list" item="obj" separator=",">
+            (#{obj.workType},#{obj.reward},#{obj.rentNum},#{obj.rentId},#{obj.total})
+        </foreach>
+    </insert>
+    <select id="findListByRentId" resultType="com.kaishengit.pojo.WorkOutDetail">
+        SELECT * FROM t_work_out_detail WHERE rent_id = #{rentId}
+    </select>
+</mapper>

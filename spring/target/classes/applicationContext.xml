@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"                 xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd              http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--
+       ·id: 容器内唯一
+       ·class：被管理bean的完全限定名
+       ·放入Spring容器的Bean，默认都是单例的 scope="singleton"
+       ·scope="prototype" 每次获取的都是不同的对象实例
+       ·Bean的对象默认会在Spring容器启动时创建。如果Bean的Scope值为prototype，那对象会在
+       调用时创建;如果Bean的Scope为singleton时，将lazy-init的属性设置true，那么对象也会在
+       调用时创建
+   -->
+<!--<bean id="userDaoImpl" class="com.kaishengit.dao.impl.UserDaoImpl" />
+    &lt;!&ndash;<bean id="userDaoImpl" class="com.kaishengit.dao.impl.UserDaoImpl" lazy-init="true"/>&ndash;&gt;
+    &lt;!&ndash;<bean id="userDaoImpl" class="com.kaishengit.dao.impl.UserDaoImpl" scope="prototype"/>&ndash;&gt;-->
+   <!-- <bean id="userDao" class="com.kaishengit.dao.impl.UserDaoImpl" />-->
+    <!--<bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl">
+        &lt;!&ndash;set注入共有三种方法&ndash;&gt;
+        <property name="userDao" ref="userDao"/>
+    </bean>-->
+    <!--set自动注入 byName
+    基于注解的时候用自动注入-->
+    <!--<bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl" autowire="byName"/>-->
+    <!--set自动注入 byType 当文件中有两个类型相同名字不同的时候回出现异常
+    基于注解的时候用自动注入-->
+    <!--<bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl" autowire="byType"/>-->
+
+    <!--constrctor自动注入：
+    autowire: constructor 先根据构造方法参数的名称去Spring中找被注入的对象，
+        如果找不到再根据构造方法参数的类型去Spring中找被注入的对象
+        基于注解的时候用自动注入-->
+    <!--<bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl" autowire="constructor"/>-->
+
+
+
+    <!--构造方法注入-->
+    <!--<bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl">
+        <constructor-arg name="userDao" ref="userDao"/>
+        <constructor-arg name="name" value="jack"/>
+        &lt;!&ndash;根据构造方法参数的索引，从0开始&ndash;&gt;
+        &lt;!&ndash;<constructor-arg index="0" ref="userDao"/>&ndash;&gt;
+        &lt;!&ndash;根据构造方法参数的类型：不适合有多个参数类型相同的情况&ndash;&gt;
+        &lt;!&ndash;<constructor-arg type="com.kaishengit.dao.UserDao" ref="userDao"/>&ndash;&gt;
+        &lt;!&ndash;根据构造方法参数的名称&ndash;&gt;
+       &lt;!&ndash; <constructor-arg name="userDao" ref="userDao"/>&ndash;&gt;
+    </bean>-->
+   <!-- <bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl" p:userDao-ref="userDao"/>-->
+        <!--<property name="userDao">
+            <bean class="com.kaishengit.dao.impl.UserDaoImpl"></bean>
+        </property>-->
+        <!--<property name="userDao">
+            <ref bean="userDao"/>
+        </property>-->
+        <!--更多set注入-->
+       <!-- <property name="name" value="jack"/>
+        <property name="age" value="23"/>
+        <property name="list">
+            <list>
+                <value>a1</value>
+                <value>a2</value>
+            </list>
+        </property>
+        <property name="set">
+            <set>
+                <value>34.34</value>
+            </set>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="k1" value="v1"/>
+                <entry key="k2" value="v2"/>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="k1">v1</prop>
+                <prop key="k2">v2</prop>
+            </props>
+        </property>-->
+   <!-- <bean id="userDao" class="com.kaishengit.dao.impl.UserDaoImpl" />
+    <bean id="userService" class="com.kaishengit.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+    &lt;!&ndash;通知类&ndash;&gt;
+    <bean id="myAspect" class="com.kaishengit.aop.MyAspect"/>
+    <aop:config>
+        &lt;!&ndash;
+            ref:引用通知类
+        &ndash;&gt;
+        <aop:aspect ref="myAspect">
+            <aop:pointcut id="pt" expression="execution(* com.kaishengit.service..*.*(..))"/>
+            &lt;!&ndash;&lt;!&ndash;前置通知&ndash;&gt;
+            <aop:before method="beforeAdvice" pointcut-ref="pt"/>
+            &lt;!&ndash;后置通知&ndash;&gt;
+            <aop:after-returning method="afterAdvice" pointcut-ref="pt"/>
+            &lt;!&ndash;异常通知&ndash;&gt;
+            <aop:after-throwing method="exceptionAdvice" pointcut-ref="pt"/>
+            &lt;!&ndash;最终通知&ndash;&gt;
+            <aop:after method="finallyAdvice" pointcut-ref="pt"/>&ndash;&gt;
+            &lt;!&ndash;环绕通知&ndash;&gt;
+            <aop:around method="aroundAdvice" pointcut-ref="pt"/>
+
+        </aop:aspect>
+    </aop:config>-->
+
+    <!--spring扫描器-->
+    <!--如果不想在xml文件中配置bean，我们可以给我们的类加上spring组件注解，只需再配置下spring的扫描器就可以实现bean的自动载入-->
+    <context:component-scan base-package="com.kaishengit"/>
+    <!--基于注解的Aop-->
+    <aop:aspectj-autoproxy/>
+
+    <!--读取properties文件-->
+    <context:property-placeholder location="classpath:config.properties"/>
+    <!--配置数据源(数据库连接池)-->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+    <!--JDBCTemplate-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <!--JDBC事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--使用注解方式的事务声明-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+</beans>

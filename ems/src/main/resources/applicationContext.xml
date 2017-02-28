@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--基于注解的Bean和IOC-->
+    <context:component-scan base-package="com.kaishengit">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <!--读取配置文件-->
+    <context:property-placeholder location="classpath:config.properties"/>
+    <!--数据库连接池-->
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--事务管理器-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!--基于注解的事务-->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <!--Mybatis SqlSEssionFactoryBean-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="typeAliasesPackage" value="com.kaishengit.pojo"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+        <property name="configuration">
+            <bean class="org.apache.ibatis.session.Configuration">
+                <property name="mapUnderscoreToCamelCase" value="true"/>
+            </bean>
+        </property>
+    </bean>
+
+    <!--MyBatis Mapper接口的扫描-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.kaishengit.mapper"></property>
+    </bean>
+    <!--shiro配置-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="shiroDbRealm"/><!--自己创建的类在引用是默认类名首字符小写-->
+        <property name="cacheManager" ref="cacheManager"/>
+    </bean>
+    <!--shiroFilter id值必须与web.xml中配置的委托spring的filter的filter-name值相同，
+    两者会自动对应起来-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <property name="securityManager" ref="securityManager"></property>
+        <!--登录地址-->
+        <property name="loginUrl" value="/"/>
+        <!--登录成功后的地址-->
+        <property name="successUrl" value="/home"/>
+        <!--没有权限的URL-->
+        <property name="unauthorizedUrl" value="/403"/>
+        <!--权限配置-->
+        <property name="filterChainDefinitions">
+            <value>
+                    /static/**=anon<!--匿名访问-->
+                    /user =roles[manager]<!--这里的角色名与数据库中的对应-->
+                    /setting/** =roles[manager]<!--这里的角色名与数据库中的对应-->
+                    /**=authc<!--根路径及其子路径，访问时都要登录后才能访问，例外情况一定放在他的上面-->
+            </value>
+        </property>
+    </bean>
+
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>
+    <!--配置使用生命周期管理器-->
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+</beans>
